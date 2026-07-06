@@ -34,6 +34,8 @@ export default function Gallery() {
 
     let offset = 0;
     let paused = false;
+    let dragging = false;
+    let lastX = 0;
     let wrapPoint = 0;
     let resumeTimeout: ReturnType<typeof setTimeout>;
     let frame: number;
@@ -45,28 +47,63 @@ export default function Gallery() {
       wrapPoint = items[half].offsetLeft - items[0].offsetLeft;
     };
 
+    const wrap = () => {
+      if (offset <= -wrapPoint) offset += wrapPoint;
+      if (offset > 0) offset -= wrapPoint;
+    };
+
     const tick = () => {
       if (!paused) {
         offset -= SPEED;
-        if (Math.abs(offset) >= wrapPoint) {
-          offset += wrapPoint;
-        }
+        wrap();
         track.style.transform = `translateX(${offset}px)`;
       }
       frame = requestAnimationFrame(tick);
     };
 
-    const pauseThenResume = () => {
-      paused = true;
+    const scheduleResume = () => {
       clearTimeout(resumeTimeout);
       resumeTimeout = setTimeout(() => {
         paused = false;
       }, 2500);
     };
 
-    viewport.addEventListener("touchstart", pauseThenResume, { passive: true });
-    viewport.addEventListener("touchmove", pauseThenResume, { passive: true });
-    viewport.addEventListener("mousedown", pauseThenResume);
+    const dragStart = (x: number) => {
+      dragging = true;
+      lastX = x;
+      paused = true;
+      clearTimeout(resumeTimeout);
+    };
+
+    const dragMove = (x: number) => {
+      if (!dragging) return;
+      offset += x - lastX;
+      lastX = x;
+      wrap();
+      track.style.transform = `translateX(${offset}px)`;
+    };
+
+    const dragEnd = () => {
+      if (!dragging) return;
+      dragging = false;
+      scheduleResume();
+    };
+
+    const onTouchStart = (e: TouchEvent) => dragStart(e.touches[0].clientX);
+    const onTouchMove = (e: TouchEvent) => dragMove(e.touches[0].clientX);
+    const onMouseDown = (e: MouseEvent) => {
+      e.preventDefault();
+      dragStart(e.clientX);
+    };
+    const onMouseMove = (e: MouseEvent) => dragMove(e.clientX);
+
+    viewport.addEventListener("touchstart", onTouchStart, { passive: true });
+    viewport.addEventListener("touchmove", onTouchMove, { passive: true });
+    viewport.addEventListener("touchend", dragEnd);
+    viewport.addEventListener("touchcancel", dragEnd);
+    viewport.addEventListener("mousedown", onMouseDown);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", dragEnd);
 
     calcWrapPoint();
     window.addEventListener("resize", calcWrapPoint);
@@ -76,16 +113,23 @@ export default function Gallery() {
       cancelAnimationFrame(frame);
       clearTimeout(resumeTimeout);
       window.removeEventListener("resize", calcWrapPoint);
-      viewport.removeEventListener("touchstart", pauseThenResume);
-      viewport.removeEventListener("touchmove", pauseThenResume);
-      viewport.removeEventListener("mousedown", pauseThenResume);
+      viewport.removeEventListener("touchstart", onTouchStart);
+      viewport.removeEventListener("touchmove", onTouchMove);
+      viewport.removeEventListener("touchend", dragEnd);
+      viewport.removeEventListener("touchcancel", dragEnd);
+      viewport.removeEventListener("mousedown", onMouseDown);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", dragEnd);
     };
   }, []);
 
   return (
     <section className="py-[6vh]">
       <Reveal>
-        <div ref={viewportRef} className="w-full overflow-hidden">
+        <div
+          ref={viewportRef}
+          className="w-full cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing"
+        >
           <div
             ref={trackRef}
             className="flex items-center gap-7 px-10 py-10 will-change-transform"
@@ -108,7 +152,7 @@ export default function Gallery() {
                     alt=""
                     fill
                     sizes="(min-width: 1000px) 260px, 230px"
-                    className="object-cover"
+                    className="pointer-events-none object-cover"
                   />
                 </div>
               </figure>

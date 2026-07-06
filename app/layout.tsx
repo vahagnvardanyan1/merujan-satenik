@@ -17,7 +17,7 @@ const notoSansArmenian = Noto_Sans_Armenian({
 });
 
 const OG_IMAGE =
-  "https://cdn-cms-uploads.picsart.com/cms-uploads/d369c622-7a9a-4875-9bb9-5f960ea5d382.jpg?to=min&r=1200&q=90";
+  "https://cdn-cms-uploads.picsart.com/cms-uploads/4c88ef0e-ccce-41ce-8166-87de430f6322.jpg?to=min&r=1200&q=90";
 
 export const metadata: Metadata = {
   title: "Մերուժան & Սաթենիկ",
