@@ -312,6 +312,13 @@
   animation-delay: calc(var(--reveal-delay, 0s) + var(--stagger, 0s));
 }
 
+/* fallback for browsers without svh units */
+@supports not (height: 100svh) {
+  .min-h-svh {
+    min-height: 100vh;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;

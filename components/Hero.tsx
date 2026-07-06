@@ -14,7 +14,7 @@ export default function Hero() {
         fill
         priority
         sizes="100vw"
-        className="animate-hero-zoom object-cover object-[50%_30%] max-md:grayscale md:object-[50%_78%] motion-reduce:animate-none"
+        className="animate-hero-zoom object-cover object-[50%_30%] md:object-[50%_78%] motion-reduce:animate-none"
       />
       <div className="absolute inset-0 bg-night/25 md:bg-night/15" />
       <div className="absolute inset-x-0 bottom-0 h-[55vh] bg-gradient-to-b from-transparent to-night/85" />
