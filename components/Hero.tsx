@@ -1,7 +1,9 @@
 import Image from "next/image";
 
-const riseClass =
-  "translate-y-[14px] animate-rise opacity-0 motion-reduce:translate-y-0 motion-reduce:animate-none motion-reduce:opacity-100";
+const blurRise =
+  "animate-rise-blur opacity-0 motion-reduce:animate-none motion-reduce:opacity-100";
+const letterSettle =
+  "animate-letter-settle opacity-0 motion-reduce:animate-none motion-reduce:opacity-100";
 
 export default function Hero() {
   return (
@@ -19,16 +21,22 @@ export default function Hero() {
 
       {/* phone: stacked names at the top */}
       <div className="relative z-[2] px-7 pt-[13vh] md:hidden">
-        <h1
-          className={`${riseClass} font-serif-hy text-[clamp(2.5rem,11vw,4.2rem)] font-normal italic leading-[1.25] text-cream [text-shadow:0_2px_30px_rgba(0,0,0,0.55)]`}
-        >
-          Մերուժան
-          <span className="block py-1 text-[0.55em] text-champagne">և</span>
-          Սաթենիկ
+        <h1 className="font-serif-hy text-[clamp(2.5rem,11vw,4.2rem)] font-normal italic leading-[1.25] text-cream [text-shadow:0_2px_30px_rgba(0,0,0,0.55)]">
+          <span className={`${blurRise} block [animation-delay:0.3s]`}>
+            Մերուժան
+          </span>
+          <span
+            className={`${blurRise} block py-1 text-[0.55em] text-champagne [animation-delay:0.55s]`}
+          >
+            և
+          </span>
+          <span className={`${blurRise} block [animation-delay:0.75s]`}>
+            Սաթենիկ
+          </span>
         </h1>
 
         <p
-          className={`${riseClass} mt-[9vh] font-serif-hy text-[clamp(1.25rem,5.4vw,1.8rem)] tracking-[0.22em] text-cream [animation-delay:0.9s] [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]`}
+          className={`${letterSettle} mt-[9vh] font-serif-hy text-[clamp(1.25rem,5.4vw,1.8rem)] text-cream [--ls-final:0.22em] [animation-delay:1.15s] [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]`}
         >
           16&thinsp;/&thinsp;08&thinsp;/&thinsp;2026
         </p>
@@ -37,7 +45,7 @@ export default function Hero() {
       {/* desktop: one-line names near the bottom */}
       <div className="relative z-[2] mt-auto hidden w-full flex-col items-center px-8 pb-[12vh] md:flex">
         <h1
-          className={`${riseClass} font-serif-hy text-[clamp(2.4rem,4.5vw,3.6rem)] font-medium leading-[1.18] text-cream [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]`}
+          className={`${blurRise} font-serif-hy text-[clamp(2.4rem,4.5vw,3.6rem)] font-medium leading-[1.18] text-cream [animation-delay:0.3s] [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]`}
         >
           Մերուժան
           <span className="mx-[0.22em] inline-block text-[0.82em] font-normal italic text-champagne">
@@ -47,17 +55,15 @@ export default function Hero() {
         </h1>
 
         <p
-          className={`${riseClass} mt-4 text-[0.88rem] font-light uppercase tracking-[0.32em] text-cream/85 [animation-delay:0.6s]`}
+          className={`${letterSettle} mt-4 text-[0.88rem] font-light uppercase text-cream/85 [--ls-final:0.32em] [animation-delay:0.75s]`}
         >
           Մենք ամուսնանում ենք
         </p>
 
-        <div
-          className={`${riseClass} my-7 h-9 w-px bg-gradient-to-b from-transparent via-cream/80 to-transparent [animation-delay:0.8s]`}
-        />
+        <div className="my-7 h-9 w-px origin-top animate-grow-div bg-gradient-to-b from-transparent via-cream/80 to-transparent opacity-0 [animation-delay:1.05s] motion-reduce:animate-none motion-reduce:opacity-100" />
 
         <p
-          className={`${riseClass} font-serif-hy text-[1.1rem] font-normal tracking-[0.06em] text-cream [animation-delay:0.95s]`}
+          className={`${blurRise} font-serif-hy text-[1.1rem] font-normal tracking-[0.06em] text-cream [animation-delay:1.2s]`}
         >
           <span className="mb-1.5 block font-sans-hy text-[0.72rem] font-light uppercase tracking-[0.28em] text-cream/70">
             Կհանդիպենք

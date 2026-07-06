@@ -19,6 +19,10 @@ const PHOTOS = [
 
 const SPEED = 0.25;
 
+// per-card tilt + vertical shift for a natural scrapbook look
+const TILTS = [-4.5, 3.4, -2.8, 4.6, -3.6, 3, -4.8, 3.8, -2.4, 5];
+const SHIFTS = [0, 10, -8, 4, -10, 8, -4, 12, -6, 6];
+
 export default function Gallery() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -89,9 +93,14 @@ export default function Gallery() {
             {[...PHOTOS, ...PHOTOS].map((src, i) => (
               <figure
                 key={`${src}-${i}`}
-                className={`w-[230px] flex-none bg-white p-2.5 pb-10 shadow-[0_14px_40px_rgba(0,0,0,0.45)] transition-transform duration-500 ease-out hover:rotate-0 hover:scale-[1.04] min-[1000px]:w-[260px] motion-reduce:transition-none ${
-                  i % 2 === 0 ? "-rotate-[2.5deg]" : "rotate-[2.5deg]"
-                }`}
+                className="polaroid w-[230px] flex-none bg-white p-2.5 pb-10 shadow-[0_14px_40px_rgba(0,0,0,0.45)] min-[1000px]:w-[260px]"
+                style={
+                  {
+                    "--tilt": `${TILTS[i % TILTS.length]}deg`,
+                    "--shift": `${SHIFTS[i % SHIFTS.length]}px`,
+                    "--stagger": `${(i % 10) * 110}ms`,
+                  } as React.CSSProperties
+                }
               >
                 <div className="relative aspect-[3/4]">
                   <Image

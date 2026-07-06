@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import Sparkle from "@/components/Sparkle";
 
 type ProgramEvent = {
   time: string;
@@ -73,8 +74,8 @@ function fallbackMapUrl(address: string) {
 export default function Program() {
   return (
     <section className="px-7 py-[6vh] text-center">
-      <Reveal>
-        <h2 className="font-serif-hy text-[clamp(1.4rem,5.8vw,2.1rem)] font-medium tracking-[0.26em] text-champagne">
+      <Reveal className="reveal-blur">
+        <h2 className="track-settle font-serif-hy text-[clamp(1.4rem,5.8vw,2.1rem)] font-medium tracking-[0.26em] text-champagne">
           ՕՐՎԱ ԾՐԱԳԻՐԸ
         </h2>
       </Reveal>
@@ -82,7 +83,9 @@ export default function Program() {
       <div className="mx-auto mt-[9vh] flex max-w-[440px] flex-col gap-[10vh] md:max-w-[560px]">
         {EVENTS.map(({ time, description, address, mapUrl, photo }) => (
           <Reveal key={time} className="flex flex-col items-center gap-6">
-            <p className="stagger font-serif-hy text-[clamp(1.8rem,7vw,2.4rem)] font-medium text-champagne">
+            <Sparkle className="pop h-3.5 w-3.5 text-champagne/70" />
+
+            <p className="stagger stagger-blur font-serif-hy text-[clamp(1.8rem,7vw,2.4rem)] font-medium text-champagne [--stagger:80ms]">
               {time}
             </p>
 
@@ -104,7 +107,7 @@ export default function Program() {
                   alt=""
                   fill
                   sizes="(max-width: 500px) 84vw, 560px"
-                  className="object-cover transition-transform duration-700 ease-out hover:scale-[1.05] motion-reduce:transition-none"
+                  className="kb object-cover transition-transform duration-700 ease-out hover:scale-[1.05] motion-reduce:transition-none"
                 />
               </div>
             )}

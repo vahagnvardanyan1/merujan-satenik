@@ -13,7 +13,7 @@ const initialState: RsvpState = { status: "idle" };
 const labelClass =
   "mb-2.5 block text-[0.72rem] font-normal uppercase tracking-[0.2em] text-champagne";
 const inputClass =
-  "w-full rounded-lg border border-cream/25 bg-white/5 px-3.5 py-3 font-serif-hy text-[1.05rem] text-cream outline-none transition-colors focus:border-champagne";
+  "w-full rounded-lg border border-cream/25 bg-white/5 px-3.5 py-3 font-serif-hy text-[1.05rem] text-cream outline-none transition-[border-color,box-shadow] duration-300 focus:border-champagne focus:shadow-[0_0_0_4px_rgba(217,189,151,0.12)]";
 const radioGroupClass =
   "flex gap-[6vw] rounded-lg border border-cream/25 px-4 py-3.5 max-[480px]:flex-col max-[480px]:gap-3.5 md:gap-10";
 const radioClass =

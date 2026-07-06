@@ -66,7 +66,7 @@ export default function Countdown() {
           {UNITS.map(({ key, word }, i) => (
             <div key={key} className="contents">
               {i > 0 && (
-                <span className="pt-0.5 font-serif-hy text-[clamp(1.9rem,7.5vw,2.8rem)] font-semibold leading-none text-cream/80">
+                <span className="animate-colon pt-0.5 font-serif-hy text-[clamp(1.9rem,7.5vw,2.8rem)] font-semibold leading-none text-cream motion-reduce:animate-none motion-reduce:text-cream/80">
                   :
                 </span>
               )}

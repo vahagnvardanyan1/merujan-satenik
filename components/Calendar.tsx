@@ -14,7 +14,7 @@ function staggerStyle(index: number) {
 export default function Calendar() {
   return (
     <Reveal className="mx-auto w-full max-w-[400px] md:max-w-[440px]">
-      <p className="font-serif-hy text-[clamp(1.6rem,6.4vw,2.2rem)] font-normal text-cream">
+      <p className="stagger stagger-blur font-serif-hy text-[clamp(1.6rem,6.4vw,2.2rem)] font-normal text-cream">
         Օգոստոս 2026
       </p>
 
@@ -39,9 +39,15 @@ export default function Calendar() {
           if (day === WEDDING_DAY) {
             return (
               <span key={day} style={style} className="stagger flex justify-center">
-                <span className="relative flex h-10 w-10 animate-ring-pulse items-center justify-center rounded-full border-[1.5px] border-champagne font-serif-hy text-[1.05rem] text-champagne motion-reduce:animate-none">
+                <span
+                  className="pop relative flex h-10 w-10 animate-ring-pulse items-center justify-center rounded-full border-[1.5px] border-champagne font-serif-hy text-[1.05rem] text-champagne motion-reduce:animate-none"
+                  style={{ "--stagger": "1050ms" } as React.CSSProperties}
+                >
                   {day}
-                  <span className="absolute -right-2.5 -top-2.5 text-[0.9rem]">
+                  <span
+                    className="pop absolute -right-2.5 -top-2.5 text-[0.9rem]"
+                    style={{ "--stagger": "1350ms" } as React.CSSProperties}
+                  >
                     💍
                   </span>
                 </span>
