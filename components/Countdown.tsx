@@ -52,29 +52,30 @@ export default function Countdown() {
   }, []);
 
   return (
-    <div className="px-[2vw] pb-[4vw] text-center">
-      <p className="mb-[4vh] text-[0.78rem] font-light uppercase tracking-[0.28em] text-stone-mid">
-        Մինչև հարսանիքը
+    <section className="px-6 py-[14vh] text-center">
+      <p className="text-[clamp(1.15rem,4.8vw,1.5rem)] font-light text-cream">
+        Մեր հարսանիքին մնացել է…
       </p>
-      <div className="mx-auto flex max-w-[500px] justify-center gap-[6vw] max-[480px]:gap-[5vw]">
+
+      <div className="mx-auto mt-[6vh] flex max-w-[500px] items-start justify-center gap-[min(4.5vw,1.5rem)]">
         {UNITS.map(({ key, word }, i) => (
           <div key={key} className="contents">
             {i > 0 && (
-              <span className="self-start font-serif-hy text-[clamp(1.8rem,5vw,2.6rem)] font-semibold leading-none text-stone-mid">
+              <span className="pt-0.5 font-serif-hy text-[clamp(1.9rem,7.5vw,2.8rem)] font-semibold leading-none text-cream/80">
                 :
               </span>
             )}
-            <div className="flex min-w-[60px] flex-col items-center max-[480px]:min-w-[50px]">
-              <span className="font-serif-hy text-[clamp(1.8rem,5vw,2.6rem)] font-semibold leading-none text-stone-dark">
+            <div className="flex min-w-[54px] flex-col items-center">
+              <span className="font-serif-hy text-[clamp(1.9rem,7.5vw,2.8rem)] font-semibold leading-none text-cream">
                 {timeLeft[key]}
               </span>
-              <span className="mt-2 text-[0.72rem] font-light tracking-[0.08em] text-stone-mid">
+              <span className="mt-3 text-[0.72rem] font-light tracking-[0.08em] text-mist">
                 {word}
               </span>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

@@ -2,44 +2,49 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-svh w-full flex-col items-center justify-end overflow-hidden">
+    <section className="relative flex min-h-svh w-full flex-col items-center overflow-hidden text-center">
       <Image
         src="https://cdn-cms-uploads.picsart.com/cms-uploads/a31192c8-29fb-4fdb-ab86-1aac1c8837e7.jpg"
         alt="Մերուժան և Սաթենիկ"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[50%_80%] contrast-[1.02] saturate-[0.92]"
+        className="object-cover object-[50%_30%] max-md:grayscale md:object-[50%_78%]"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(113,108,105,0.35)_0%,rgba(20,14,9,0.15)_32%,rgba(18,13,8,0.35)_55%,rgba(90,86,83,0.86)_88%)]" />
+      <div className="absolute inset-0 bg-night/25 md:bg-night/15" />
+      <div className="absolute inset-x-0 bottom-0 h-[55vh] bg-gradient-to-b from-transparent to-night/85" />
 
-      <div className="relative z-[2] flex w-full translate-y-[14px] animate-rise flex-col items-center px-[8vw] pb-[9vh] text-center opacity-0 max-[420px]:pb-[11vh] motion-reduce:translate-y-0 motion-reduce:animate-none motion-reduce:opacity-100">
-        <svg
-          className="mb-[22px] h-[52px] w-[86px] opacity-85"
-          viewBox="0 0 86 52"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M2 52 V22 A41 41 0 0 1 84 22 V52"
-            className="fill-none stroke-gold stroke-[1.1]"
-          />
-        </svg>
-
-        <h1 className="font-serif-hy text-[clamp(2.1rem,6.4vw,3.4rem)] font-medium leading-[1.18] tracking-[0.01em] text-cream [text-shadow:0_2px_24px_rgba(0,0,0,0.35)]">
+      {/* phone: stacked names at the top */}
+      <div className="relative z-[2] translate-y-[14px] animate-rise px-7 pt-[13vh] opacity-0 md:hidden motion-reduce:translate-y-0 motion-reduce:animate-none motion-reduce:opacity-100">
+        <h1 className="font-serif-hy text-[clamp(2.5rem,11vw,4.2rem)] font-normal italic leading-[1.25] text-cream [text-shadow:0_2px_30px_rgba(0,0,0,0.55)]">
           Մերուժան
-          <span className="mx-[0.18em] inline-block text-[0.85em] font-normal italic text-gold">
+          <span className="block py-1 text-[0.55em] text-champagne">և</span>
+          Սաթենիկ
+        </h1>
+
+        <p className="mt-[9vh] font-serif-hy text-[clamp(1.25rem,5.4vw,1.8rem)] tracking-[0.22em] text-cream [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]">
+          16&thinsp;/&thinsp;08&thinsp;/&thinsp;2026
+        </p>
+      </div>
+
+      {/* desktop: one-line names near the bottom */}
+      <div className="relative z-[2] mt-auto hidden w-full translate-y-[14px] animate-rise flex-col items-center px-8 pb-[12vh] opacity-0 md:flex motion-reduce:translate-y-0 motion-reduce:animate-none motion-reduce:opacity-100">
+        <h1 className="font-serif-hy text-[clamp(2.4rem,4.5vw,3.6rem)] font-medium leading-[1.18] text-cream [text-shadow:0_2px_24px_rgba(0,0,0,0.45)]">
+          Մերուժան
+          <span className="mx-[0.22em] inline-block text-[0.82em] font-normal italic text-champagne">
             և
           </span>
           Սաթենիկ
         </h1>
-        <p className="mt-4 text-[0.86rem] font-light uppercase tracking-[0.32em] text-gold max-[420px]:tracking-[0.24em]">
+
+        <p className="mt-4 text-[0.88rem] font-light uppercase tracking-[0.32em] text-cream/85">
           Մենք ամուսնանում ենք
         </p>
 
-        <div className="my-7 h-9 w-px bg-gradient-to-b from-transparent via-gold to-transparent opacity-80" />
+        <div className="my-7 h-9 w-px bg-gradient-to-b from-transparent via-cream/80 to-transparent" />
 
-        <p className="font-serif-hy text-[1.05rem] font-normal tracking-[0.06em] text-cream">
-          <span className="mb-1.5 block font-sans-hy text-[0.7rem] font-light uppercase tracking-[0.28em] text-gold">
+        <p className="font-serif-hy text-[1.1rem] font-normal tracking-[0.06em] text-cream">
+          <span className="mb-1.5 block font-sans-hy text-[0.72rem] font-light uppercase tracking-[0.28em] text-cream/70">
             Կհանդիպենք
           </span>
           16 Օգոստոսի, 2026
@@ -47,7 +52,7 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-[calc(26px+env(safe-area-inset-bottom))] left-1/2 z-[2] flex h-[26px] w-4 -translate-x-1/2 animate-fade-in justify-center rounded-[10px] border border-cream/55 pt-[5px] opacity-0 motion-reduce:animate-none motion-reduce:opacity-100">
-        <span className="h-1.5 w-[3px] animate-dot rounded-[2px] bg-gold motion-reduce:animate-none" />
+        <span className="h-1.5 w-[3px] animate-dot rounded-[2px] bg-champagne motion-reduce:animate-none" />
       </div>
     </section>
   );

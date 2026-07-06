@@ -1,12 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-stone-dark: #716c69;
-  --color-stone-mid: #bbaca9;
-  --color-cream: #f1eeea;
-  --color-gold: #e6d5d0;
-  --color-ink: #4a4542;
-  --color-ink-soft: #8a8380;
+  --color-night: #17140f;
+  --color-cream: #f4ede2;
+  --color-champagne: #d9bd97;
+  --color-sand: #ecdcc3;
+  --color-mist: #b3a89b;
 
   --font-serif-hy: var(--font-noto-serif-armenian), serif;
   --font-sans-hy: var(--font-noto-sans-armenian), sans-serif;

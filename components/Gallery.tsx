@@ -78,26 +78,32 @@ export default function Gallery() {
   }, []);
 
   return (
-    <div ref={viewportRef} className="w-full overflow-hidden">
-      <div
-        ref={trackRef}
-        className="flex gap-[3vw] px-[13vw] will-change-transform max-[700px]:px-[6vw] min-[1000px]:gap-6 min-[1000px]:px-[4vw]"
-      >
-        {[...PHOTOS, ...PHOTOS].map((src, i) => (
-          <figure
-            key={`${src}-${i}`}
-            className="relative aspect-[3/4] w-[78vw] max-w-[320px] flex-none overflow-hidden bg-stone-mid max-[700px]:w-[260px] max-[700px]:max-w-[260px] min-[1000px]:w-[280px] min-[1000px]:max-w-[280px]"
-          >
-            <Image
-              src={src}
-              alt=""
-              fill
-              sizes="(max-width: 700px) 260px, (min-width: 1000px) 280px, 78vw"
-              className="object-cover"
-            />
-          </figure>
-        ))}
+    <section className="py-[6vh]">
+      <div ref={viewportRef} className="w-full overflow-hidden">
+        <div
+          ref={trackRef}
+          className="flex items-center gap-7 px-10 py-10 will-change-transform"
+        >
+          {[...PHOTOS, ...PHOTOS].map((src, i) => (
+            <figure
+              key={`${src}-${i}`}
+              className={`w-[230px] flex-none bg-white p-2.5 pb-10 shadow-[0_14px_40px_rgba(0,0,0,0.45)] min-[1000px]:w-[260px] ${
+                i % 2 === 0 ? "-rotate-[2.5deg]" : "rotate-[2.5deg]"
+              }`}
+            >
+              <div className="relative aspect-[3/4]">
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1000px) 260px, 230px"
+                  className="object-cover"
+                />
+              </div>
+            </figure>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

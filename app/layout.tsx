@@ -25,6 +25,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#17140f",
 };
 
 export default function RootLayout({
@@ -35,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="hy">
       <body
-        className={`${notoSerifArmenian.variable} ${notoSansArmenian.variable} min-h-full overflow-x-hidden bg-stone-dark font-sans-hy text-cream`}
+        className={`${notoSerifArmenian.variable} ${notoSansArmenian.variable} min-h-full overflow-x-hidden bg-night font-sans-hy text-cream`}
       >
         {children}
       </body>

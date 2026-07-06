@@ -1,21 +1,29 @@
-import BackgroundMusic from "@/components/BackgroundMusic";
+import FixedBackground from "@/components/FixedBackground";
+import MusicToggle from "@/components/MusicToggle";
 import Hero from "@/components/Hero";
+import Quote from "@/components/Quote";
+import Invitation from "@/components/Invitation";
+import Program from "@/components/Program";
 import Countdown from "@/components/Countdown";
 import Gallery from "@/components/Gallery";
-import Schedule from "@/components/Schedule";
-import Rsvp from "@/components/Rsvp";
+import Flower from "@/components/Flower";
 
 export default function Home() {
   return (
-    <main>
-      <BackgroundMusic src="https://cdn-cms-uploads.picsart.com/cms-uploads/89bc4d42-86a5-456a-adb1-2f23a4ba0aa4.mp3" />
-      <Hero />
-      <section className="overflow-hidden bg-cream py-[10vh] max-[700px]:py-[8vh]">
+    <>
+      <FixedBackground />
+      <MusicToggle src="https://cdn-cms-uploads.picsart.com/cms-uploads/89bc4d42-86a5-456a-adb1-2f23a4ba0aa4.mp3" />
+      <main className="relative z-10 bg-night/85">
+        <Hero />
+        <Quote />
+        <Invitation />
+        <Program />
         <Countdown />
         <Gallery />
-      </section>
-      <Schedule />
-      <Rsvp />
-    </main>
+        <footer className="flex justify-center pb-[10vh] pt-[2vh]">
+          <Flower className="h-28 w-24 text-cream/60" />
+        </footer>
+      </main>
+    </>
   );
 }
