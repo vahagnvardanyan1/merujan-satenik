@@ -2,6 +2,11 @@
 
 import { useActionState } from "react";
 import { submitRsvp, type RsvpState } from "@/app/actions/rsvp";
+import Reveal from "@/components/Reveal";
+
+function staggerStyle(step: number) {
+  return { "--stagger": `${step * 110}ms` } as React.CSSProperties;
+}
 
 const initialState: RsvpState = { status: "idle" };
 
@@ -20,7 +25,7 @@ export default function Rsvp() {
 
   return (
     <section className="px-7 py-[12vh] text-center max-[480px]:px-6">
-      <div className="mx-auto max-w-[480px]">
+      <Reveal className="mx-auto max-w-[480px]">
         <h2 className="font-serif-hy text-[clamp(1.3rem,5.2vw,1.9rem)] font-medium leading-[1.5] tracking-[0.14em] text-champagne">
           ՀԱՍՏԱՏԵՔ ՁԵՐ ՆԵՐԿԱՅՈՒԹՅՈՒՆԸ
         </h2>
@@ -29,14 +34,14 @@ export default function Rsvp() {
         </p>
 
         {state.status === "success" ? (
-          <p className="rounded-lg border border-champagne/40 px-6 py-10 text-[1.05rem] font-light leading-[1.8] text-cream">
+          <p className="animate-tick rounded-lg border border-champagne/40 px-6 py-10 text-[1.05rem] font-light leading-[1.8] text-cream motion-reduce:animate-none">
             Շնորհակալություն։
             <br />
             Ձեր պատասխանն ընդունված է 🤍
           </p>
         ) : (
           <form action={formAction} className="flex flex-col gap-[4.5vh] text-left">
-            <div>
+            <div className="stagger" style={staggerStyle(1)}>
               <label htmlFor="rsvp-name" className={labelClass}>
                 Անուն Ազգանուն
               </label>
@@ -49,7 +54,7 @@ export default function Rsvp() {
               />
             </div>
 
-            <div>
+            <div className="stagger" style={staggerStyle(2)}>
               <span className={labelClass}>Հարսի կողմից եք, թե Փեսայի</span>
               <div className={radioGroupClass}>
                 <label className={radioClass}>
@@ -74,7 +79,7 @@ export default function Rsvp() {
               </div>
             </div>
 
-            <div>
+            <div className="stagger" style={staggerStyle(3)}>
               <label htmlFor="rsvp-guests" className={labelClass}>
                 Քանի հոգով կգաք
               </label>
@@ -94,7 +99,7 @@ export default function Rsvp() {
               />
             </div>
 
-            <div>
+            <div className="stagger" style={staggerStyle(4)}>
               <span className={labelClass}>Կգաք հարսանիքին</span>
               <div className={radioGroupClass}>
                 <label className={radioClass}>
@@ -128,13 +133,14 @@ export default function Rsvp() {
             <button
               type="submit"
               disabled={pending}
-              className="mt-[1vh] cursor-pointer rounded-full bg-sand py-4 text-[0.88rem] uppercase tracking-[0.22em] text-night transition-colors hover:bg-cream disabled:cursor-wait disabled:opacity-60"
+              className="stagger mt-[1vh] cursor-pointer rounded-full bg-sand py-4 text-[0.88rem] uppercase tracking-[0.22em] text-night transition-all duration-300 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[0_12px_32px_rgba(236,220,195,0.18)] active:translate-y-0 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60 motion-reduce:transition-none"
+              style={staggerStyle(5)}
             >
               {pending ? "Ուղարկվում է…" : "Ուղարկել"}
             </button>
           </form>
         )}
-      </div>
+      </Reveal>
     </section>
   );
 }

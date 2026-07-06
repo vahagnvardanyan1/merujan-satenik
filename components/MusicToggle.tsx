@@ -54,8 +54,14 @@ export default function MusicToggle({ src }: { src: string }) {
         type="button"
         onClick={toggle}
         aria-label={playing ? "Անջատել երաժշտությունը" : "Միացնել երաժշտությունը"}
-        className="fixed right-4 top-[max(1rem,env(safe-area-inset-top))] z-50 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-cream/25 bg-night/40 text-cream backdrop-blur-md transition-colors hover:bg-night/60"
+        className="fixed right-4 top-[max(1rem,env(safe-area-inset-top))] z-50 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-cream/25 bg-night/40 text-cream backdrop-blur-md transition-all duration-300 hover:scale-105 hover:bg-night/60 active:scale-95"
       >
+        {playing && (
+          <span
+            className="pointer-events-none absolute inset-0 animate-pulse-soft rounded-full border border-champagne/60 motion-reduce:animate-none motion-reduce:opacity-0"
+            aria-hidden
+          />
+        )}
         {playing ? (
           <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
             <path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4Z" />

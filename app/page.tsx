@@ -8,6 +8,7 @@ import Countdown from "@/components/Countdown";
 import Gallery from "@/components/Gallery";
 import Rsvp from "@/components/Rsvp";
 import Flower from "@/components/Flower";
+import Reveal from "@/components/Reveal";
 
 export default function Home() {
   return (
@@ -23,7 +24,9 @@ export default function Home() {
         <Gallery />
         <Rsvp />
         <footer className="flex justify-center pb-[10vh] pt-[2vh]">
-          <Flower className="h-28 w-24 text-cream/60" />
+          <Reveal>
+            <Flower className="draw h-28 w-24 text-cream/60" />
+          </Reveal>
         </footer>
       </main>
     </>

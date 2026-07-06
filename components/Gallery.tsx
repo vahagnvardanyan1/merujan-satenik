@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import Reveal from "@/components/Reveal";
 
 const PHOTOS = [
   "https://cdn-cms-uploads.picsart.com/cms-uploads/869e99c9-5d9c-49c7-9fce-508e8a945cbc.jpg", // NAR_285
@@ -79,31 +80,33 @@ export default function Gallery() {
 
   return (
     <section className="py-[6vh]">
-      <div ref={viewportRef} className="w-full overflow-hidden">
-        <div
-          ref={trackRef}
-          className="flex items-center gap-7 px-10 py-10 will-change-transform"
-        >
-          {[...PHOTOS, ...PHOTOS].map((src, i) => (
-            <figure
-              key={`${src}-${i}`}
-              className={`w-[230px] flex-none bg-white p-2.5 pb-10 shadow-[0_14px_40px_rgba(0,0,0,0.45)] min-[1000px]:w-[260px] ${
-                i % 2 === 0 ? "-rotate-[2.5deg]" : "rotate-[2.5deg]"
-              }`}
-            >
-              <div className="relative aspect-[3/4]">
-                <Image
-                  src={src}
-                  alt=""
-                  fill
-                  sizes="(min-width: 1000px) 260px, 230px"
-                  className="object-cover"
-                />
-              </div>
-            </figure>
-          ))}
+      <Reveal>
+        <div ref={viewportRef} className="w-full overflow-hidden">
+          <div
+            ref={trackRef}
+            className="flex items-center gap-7 px-10 py-10 will-change-transform"
+          >
+            {[...PHOTOS, ...PHOTOS].map((src, i) => (
+              <figure
+                key={`${src}-${i}`}
+                className={`w-[230px] flex-none bg-white p-2.5 pb-10 shadow-[0_14px_40px_rgba(0,0,0,0.45)] transition-transform duration-500 ease-out hover:rotate-0 hover:scale-[1.04] min-[1000px]:w-[260px] motion-reduce:transition-none ${
+                  i % 2 === 0 ? "-rotate-[2.5deg]" : "rotate-[2.5deg]"
+                }`}
+              >
+                <div className="relative aspect-[3/4]">
+                  <Image
+                    src={src}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1000px) 260px, 230px"
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
+            ))}
+          </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

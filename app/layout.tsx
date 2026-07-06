@@ -16,9 +16,29 @@ const notoSansArmenian = Noto_Sans_Armenian({
   display: "swap",
 });
 
+const OG_IMAGE =
+  "https://cdn-cms-uploads.picsart.com/cms-uploads/d369c622-7a9a-4875-9bb9-5f960ea5d382.jpg?to=min&r=1200&q=90";
+
 export const metadata: Metadata = {
   title: "Մերուժան & Սաթենիկ",
   description: "Հարսանեկան հրավիրատոմս — 16 Օգոստոսի, 2026",
+  openGraph: {
+    title: "Մերուժան & Սաթենիկ",
+    description: "Հարսանեկան հրավիրատոմս — 16 Օգոստոսի, 2026",
+    type: "website",
+    images: [
+      {
+        url: OG_IMAGE,
+        alt: "Մերուժան և Սաթենիկ",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Մերուժան & Սաթենիկ",
+    description: "Հարսանեկան հրավիրատոմս — 16 Օգոստոսի, 2026",
+    images: [OG_IMAGE],
+  },
 };
 
 export const viewport: Viewport = {

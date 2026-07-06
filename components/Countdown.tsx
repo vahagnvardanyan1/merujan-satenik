@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Reveal from "@/components/Reveal";
 
 const WEDDING_DATE = new Date("2026-08-16T11:00:00").getTime();
 
@@ -53,29 +54,37 @@ export default function Countdown() {
 
   return (
     <section className="px-6 py-[14vh] text-center">
-      <p className="text-[clamp(1.15rem,4.8vw,1.5rem)] font-light text-cream">
-        Մեր հարսանիքին մնացել է…
-      </p>
+      <Reveal>
+        <p className="text-[clamp(1.15rem,4.8vw,1.5rem)] font-light text-cream">
+          Մեր հարսանիքին մնացել է…
+        </p>
 
-      <div className="mx-auto mt-[6vh] flex max-w-[500px] items-start justify-center gap-[min(4.5vw,1.5rem)]">
-        {UNITS.map(({ key, word }, i) => (
-          <div key={key} className="contents">
-            {i > 0 && (
-              <span className="pt-0.5 font-serif-hy text-[clamp(1.9rem,7.5vw,2.8rem)] font-semibold leading-none text-cream/80">
-                :
-              </span>
-            )}
-            <div className="flex min-w-[54px] flex-col items-center">
-              <span className="font-serif-hy text-[clamp(1.9rem,7.5vw,2.8rem)] font-semibold leading-none text-cream">
-                {timeLeft[key]}
-              </span>
-              <span className="mt-3 text-[0.72rem] font-light tracking-[0.08em] text-mist">
-                {word}
-              </span>
+        <div
+          className="stagger mx-auto mt-[6vh] flex max-w-[500px] items-start justify-center gap-[min(4.5vw,1.5rem)]"
+          style={{ "--stagger": "180ms" } as React.CSSProperties}
+        >
+          {UNITS.map(({ key, word }, i) => (
+            <div key={key} className="contents">
+              {i > 0 && (
+                <span className="pt-0.5 font-serif-hy text-[clamp(1.9rem,7.5vw,2.8rem)] font-semibold leading-none text-cream/80">
+                  :
+                </span>
+              )}
+              <div className="flex min-w-[54px] flex-col items-center">
+                <span
+                  key={timeLeft[key]}
+                  className="animate-tick font-serif-hy text-[clamp(1.9rem,7.5vw,2.8rem)] font-semibold leading-none text-cream motion-reduce:animate-none"
+                >
+                  {timeLeft[key]}
+                </span>
+                <span className="mt-3 text-[0.72rem] font-light tracking-[0.08em] text-mist">
+                  {word}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }

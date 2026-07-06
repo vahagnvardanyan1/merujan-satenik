@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/Reveal";
 
 type ProgramEvent = {
   time: string;
@@ -72,30 +73,38 @@ function fallbackMapUrl(address: string) {
 export default function Program() {
   return (
     <section className="px-7 py-[6vh] text-center">
-      <h2 className="font-serif-hy text-[clamp(1.4rem,5.8vw,2.1rem)] font-medium tracking-[0.26em] text-champagne">
-        ՕՐՎԱ ԾՐԱԳԻՐԸ
-      </h2>
+      <Reveal>
+        <h2 className="font-serif-hy text-[clamp(1.4rem,5.8vw,2.1rem)] font-medium tracking-[0.26em] text-champagne">
+          ՕՐՎԱ ԾՐԱԳԻՐԸ
+        </h2>
+      </Reveal>
 
       <div className="mx-auto mt-[9vh] flex max-w-[440px] flex-col gap-[10vh] md:max-w-[560px]">
         {EVENTS.map(({ time, description, address, mapUrl, photo }) => (
-          <div key={time} className="flex flex-col items-center gap-6">
-            <p className="font-serif-hy text-[clamp(1.8rem,7vw,2.4rem)] font-medium text-champagne">
+          <Reveal key={time} className="flex flex-col items-center gap-6">
+            <p className="stagger font-serif-hy text-[clamp(1.8rem,7vw,2.4rem)] font-medium text-champagne">
               {time}
             </p>
 
-            <p className="max-w-[30ch] text-[clamp(0.98rem,4vw,1.15rem)] font-light leading-[1.8] text-mist">
+            <p
+              className="stagger max-w-[30ch] text-[clamp(0.98rem,4vw,1.15rem)] font-light leading-[1.8] text-mist"
+              style={{ "--stagger": "120ms" } as React.CSSProperties}
+            >
               {description}
               <span className="mt-1 block">{address}</span>
             </p>
 
             {photo && (
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+              <div
+                className="stagger relative aspect-[4/3] w-full overflow-hidden rounded-2xl"
+                style={{ "--stagger": "240ms" } as React.CSSProperties}
+              >
                 <Image
                   src={photo}
                   alt=""
                   fill
                   sizes="(max-width: 500px) 84vw, 560px"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out hover:scale-[1.05] motion-reduce:transition-none"
                 />
               </div>
             )}
@@ -104,11 +113,12 @@ export default function Program() {
               href={mapUrl ?? fallbackMapUrl(address)}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full max-w-[340px] rounded-full bg-sand py-4 text-[1rem] font-normal text-night transition-colors hover:bg-cream"
+              className="stagger w-full max-w-[340px] rounded-full bg-sand py-4 text-[1rem] font-normal text-night transition-all duration-300 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[0_12px_32px_rgba(236,220,195,0.18)] active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none"
+              style={{ "--stagger": "340ms" } as React.CSSProperties}
             >
               Քարտեզ
             </a>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
