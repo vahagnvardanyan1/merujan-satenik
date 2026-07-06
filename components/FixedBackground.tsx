@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function FixedBackground() {
   return (
-    <div className="fixed inset-0 z-0" aria-hidden>
+    <div className="fixed left-0 top-0 z-0 h-lvh w-full" aria-hidden>
       <Image
         src="https://cdn-cms-uploads.picsart.com/cms-uploads/a31192c8-29fb-4fdb-ab86-1aac1c8837e7.jpg"
         alt=""

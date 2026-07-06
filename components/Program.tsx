@@ -97,15 +97,19 @@ export default function Program() {
               <span className="mt-1 block">{address}</span>
             </p>
 
-            <a
-              href={mapUrl ?? fallbackMapUrl(address)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="stagger w-full max-w-[340px] rounded-full bg-sand py-4 text-[1rem] font-normal text-night transition-all duration-300 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[0_12px_32px_rgba(236,220,195,0.18)] active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none"
+            <div
+              className="stagger flex w-full justify-center"
               style={{ "--stagger": "300ms" } as React.CSSProperties}
             >
-              Քարտեզ
-            </a>
+              <a
+                href={mapUrl ?? fallbackMapUrl(address)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full max-w-[340px] rounded-full bg-sand py-4 text-[1rem] font-normal text-night transition-all duration-300 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[0_12px_32px_rgba(236,220,195,0.18)] active:translate-y-0 active:scale-[0.98] motion-reduce:transition-none"
+              >
+                Քարտեզ
+              </a>
+            </div>
           </Reveal>
         ))}
       </div>

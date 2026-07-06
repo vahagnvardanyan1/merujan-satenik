@@ -287,7 +287,8 @@
 
 .reveal.is-visible .polaroid {
   opacity: 1;
-  animation: polaroid-in 1.15s var(--ease-soft) both;
+  /* backwards (not both): once the entrance ends, normal styles resume so :hover works */
+  animation: polaroid-in 1.15s var(--ease-soft) backwards;
   animation-delay: var(--stagger, 0s);
 }
 
@@ -308,14 +309,18 @@
 }
 
 .reveal.is-visible .kb {
-  animation: kb-settle 1.9s var(--ease-soft) both;
+  animation: kb-settle 1.9s var(--ease-soft) backwards;
   animation-delay: calc(var(--reveal-delay, 0s) + var(--stagger, 0s));
 }
 
-/* fallback for browsers without svh units */
+/* fallback for browsers without svh/lvh units */
 @supports not (height: 100svh) {
   .min-h-svh {
     min-height: 100vh;
+  }
+
+  .h-lvh {
+    height: 100vh;
   }
 }
 

@@ -130,14 +130,15 @@ export default function Rsvp() {
               </p>
             )}
 
-            <button
-              type="submit"
-              disabled={pending}
-              className="stagger mt-[1vh] cursor-pointer rounded-full bg-sand py-4 text-[0.88rem] uppercase tracking-[0.22em] text-night transition-all duration-300 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[0_12px_32px_rgba(236,220,195,0.18)] active:translate-y-0 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60 motion-reduce:transition-none"
-              style={staggerStyle(5)}
-            >
-              {pending ? "Ուղարկվում է…" : "Ուղարկել"}
-            </button>
+            <div className="stagger flex flex-col" style={staggerStyle(5)}>
+              <button
+                type="submit"
+                disabled={pending}
+                className="mt-[1vh] cursor-pointer rounded-full bg-sand py-4 text-[0.88rem] uppercase tracking-[0.22em] text-night transition-all duration-300 hover:-translate-y-0.5 hover:bg-cream hover:shadow-[0_12px_32px_rgba(236,220,195,0.18)] active:translate-y-0 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60 motion-reduce:transition-none"
+              >
+                {pending ? "Ուղարկվում է…" : "Ուղարկել"}
+              </button>
+            </div>
           </form>
         )}
       </Reveal>
