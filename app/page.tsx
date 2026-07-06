@@ -6,6 +6,7 @@ import Invitation from "@/components/Invitation";
 import Program from "@/components/Program";
 import Countdown from "@/components/Countdown";
 import Gallery from "@/components/Gallery";
+import Rsvp from "@/components/Rsvp";
 import Flower from "@/components/Flower";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
         <Program />
         <Countdown />
         <Gallery />
+        <Rsvp />
         <footer className="flex justify-center pb-[10vh] pt-[2vh]">
           <Flower className="h-28 w-24 text-cream/60" />
         </footer>

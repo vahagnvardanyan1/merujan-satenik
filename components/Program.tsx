@@ -22,6 +22,8 @@ const EVENTS: ProgramEvent[] = [
     time: "11:30",
     description: "Հարսի տուն",
     address: "Երևան, Ազատ Շերենց 2/6",
+    mapUrl:
+      "https://yandex.com/navi?ol=geo&text=Azat%20Sherents%20Street,%202/6&sll=44.478635,40.218746&sspn=0.006294,0.008210&si=2kvgfcq82c513cv4xacygz4778",
   },
   {
     time: "14:00",
