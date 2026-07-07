@@ -28,9 +28,11 @@ Guest responses are submitted through a server action (`app/actions/rsvp.ts`). W
        new Date(),
        data.name,
        data.side === "bride" ? "Հարսի կողմից" : "Փեսայի կողմից",
-       data.guests,
+       Number(data.guests),
        data.attending === "yes" ? "Այո" : "Ոչ",
      ]);
+     // keep the guests column formatted as a plain number (not a date)
+     sheet.getRange(sheet.getLastRow(), 4).setNumberFormat("0");
      return ContentService.createTextOutput(
        JSON.stringify({ ok: true }),
      ).setMimeType(ContentService.MimeType.JSON);
