@@ -14,7 +14,7 @@ const GROOM_HOUSE_MAP =
 
 const EVENTS: ProgramEvent[] = [
   {
-    time: "10:30",
+    time: "10:00",
     description: "Փեսայի տուն",
     address: "Երևան, Էրեբունի 6/10",
     icon: "house",
