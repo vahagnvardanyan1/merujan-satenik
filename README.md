@@ -7,7 +7,7 @@ npm run dev    # develop
 npm run build  # production build
 npm start      # serve production build
 ```
-
+ 
 ## RSVP → Google Sheets
 
 Guest responses are submitted through a server action (`app/actions/rsvp.ts`). Where they land depends on `RSVP_WEBHOOK_URL`:
