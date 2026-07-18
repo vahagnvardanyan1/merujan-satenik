@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import Quote from "@/components/Quote";
 import Invitation from "@/components/Invitation";
 import Program from "@/components/Program";
-import Notice from "@/components/Notice";
 import Countdown from "@/components/Countdown";
 import Gallery from "@/components/Gallery";
 import Rsvp from "@/components/Rsvp";
@@ -21,7 +20,6 @@ export default function Home() {
         <Quote />
         <Invitation />
         <Program />
-        <Notice />
         <Countdown />
         <Gallery />
         <Rsvp />
